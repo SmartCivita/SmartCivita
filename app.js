@@ -110,11 +110,17 @@ document.addEventListener('DOMContentLoaded', function() {
             'Josep': 'Especialista en en Backend, APIs y Bases de Datos',
             'Yimis': 'Desarrollador en Mobile Android y iOS',
             'Bayron': 'Desarrollador Frontend y Experiencia de Usuario',
-            'Joriel': 'Ingeniero Inteligencia artifical'
+            'Joriel': 'Desarrolador de Inteligencia artifical'
         };
+
+        if (document.getElementById("member-info-box")) {
+        return;
+    }
+        
 
         
         const modal = document.createElement('div');
+        modal.id = "member-info-box";
         modal.style.cssText = `
             position: fixed;
             top: 50%;
@@ -217,4 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     animateWaves();
+});
+
+document.querySelectorAll(".typing").forEach(el => {
+  el.addEventListener("animationend", () => {
+    el.style.borderRight = "none"; 
+  });
 });
