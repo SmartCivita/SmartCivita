@@ -130,21 +130,27 @@ document.addEventListener('DOMContentLoaded', function() {
     function showMemberInfo(name) {
         const memberInfo = {
             'Joseph': {
-                rol: 'Líder de Desarrollo Backend',
-                descripcion: 'Josep es la fuerza detrás de nuestra infraestructura de datos y lógica de negocio. Con más de 10 años de experiencia, asegura sistemas robustos y escalables.',
+                rol: 'Líder de Desarrollo',
+                descripcion: 'Soy un desarrollador con 3 años de experiencia laboral en proyectos corporativos y universitarios, trabajando con equipos interfuncionales en entornos ágiles. Me destaco por el liderazgo en control de código, optimización de arquitecturas y automatización de procesos internos. Tengo certificaciones en Python, Django, SCRUM y otros, lo que me permite aportar soluciones escalables y eficientes.',
                 habilidades: {
-                    "Python & Django": "Experto en APIs y servicios RESTful.",
-                    "Bases de Datos": "SQL (PostgreSQL) y NoSQL (MongoDB), diseño y optimización.",
-                    "Cloud Computing": "Experiencia con AWS para despliegue y gestión de servicios."
+                    "Lenguajes y Backend": "Python, Django, FastAPI, NodeJS, Postman, IA, CI/CD",
+                    "Frontend": "Angular, React, Tailwind, HTML5, CSS3, Bootstrap, JavaScript, TypeScript, SCSS, JQuery, AJAX",
+                    "Bases de Datos": "MySQL, PostgreSQL, Firebase, MongoDB",
+                    "Control de Versiones": "Git, GitHub, GitLab",
+                    "Gestión de Proyectos": "Jira, Confluence, Slack, SCRUM",
                 }
             },
             'Yimis': {
-                rol: 'Desarrollador Mobile',
-                descripcion: 'Especialista en desarrollo de aplicaciones móviles Android y iOS con experiencia en interfaces intuitivas.',
+                rol: 'Desarrollador de Software',
+                descripcion: 'Soy un desarrollador con conocimientos en Flutter/Dart para la creación de aplicaciones móviles multiplataforma, con experiencia en integración de APIs de mapas (Google Maps y OpenStreetMap). Manejo Python como apoyo para automatización y procesamiento de datos, y también C# en entornos financieros. Me caracterizo por la capacidad de aprendizaje rápido, adaptabilidad a nuevas tecnologías y orientación a resultados prácticos.',
                 habilidades: {
-                    "Kotlin & Java": "Desarrollo Android nativo.",
-                    "Swift & Objective-C": "Desarrollo iOS.",
-                    "Flutter & React Native": "Multiplataforma."
+                    "Lenguajes de Programación": "Python, Dart, C#",
+                    "Desarrollo Móvil": "Aplicaciones Flutter/Dart con geolocalización, solicitudes de viaje tipo Uber",
+                    "Backend y APIs": "Consumo e integración de APIs REST, mantenimiento de sistemas financieros en C#",
+                    "Optimización de Rutas": "Google Maps API, OpenStreetMap",
+                    "Desarrollo Web": "Aplicaciones para procesamiento y gestión de documentos logísticos",
+                    "Procesamiento de Datos": "JSON, CSV, SQL, Pandas",
+                    "Herramientas": "Git, GitHub, entornos virtuales (venv)"
                 }
             },
             'Bayron': {
@@ -159,14 +165,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             },
             'Joriel': {
-                rol: 'Desarrollador de Inteligencia Artificial',
-                descripcion: 'Investigador y creador de soluciones inteligentes para problemas complejos.',
+                rol: 'Desarrollador de Software',
+                descripcion: 'Soy un desarrollador con sólidos conocimientos en programación, desarrollo web y gestión de bases de datos. Manejo Python, C++ y tecnologías web como HTML5, CSS3 y JavaScript. Tengo experiencia con MySQL y PostgreSQL, y me interesa especialmente el backend, la inteligencia artificial y la automatización. Me destaco por mi mentalidad de mejora continua y la búsqueda de soluciones eficientes y seguras.',
                 habilidades: {
-                    "Machine Learning": "Modelos predictivos y clasificación.",
-                    "Deep Learning": "Redes neuronales avanzadas.",
-                    "Procesamiento de Datos": "Optimización y análisis de grandes volúmenes."
+                    "Lenguajes de Programación": "Python (desde 2022), C++ (desde 2024)",
+                    "Tecnologías Web": "HTML5, CSS3, JavaScript, Flask",
+                    "Bases de Datos": "SQL, MySQL, PostgreSQL",
+                    "Proyectos Personales": "Sistema de autenticación con reconocimiento facial (Flask, JS, HTML5, CSS3, MySQL, ArcFace), Reconocimiento facial en tiempo real con LBPH (Python, OpenCV)",
                 }
             }
+
         };
 
         const member = memberInfo[name];
@@ -189,6 +197,11 @@ document.addEventListener('DOMContentLoaded', function() {
             z-index: 1000;
             max-width: 800px;
             width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-gutter: stable;
+            clip-path: inset(0 round 25px);
             transition: all 0.3s ease;
             font-family: 'Georgia', serif;
         `;
@@ -258,6 +271,28 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             modal.style.transform = 'translate(-50%, -50%) scale(1)';
         }, 10);
+
+        if (!document.getElementById("modal-scroll-style")) {
+            const style = document.createElement("style");
+            style.id = "modal-scroll-style";
+            style.textContent = `
+                #member-info-box::-webkit-scrollbar {
+                    width: 10px;
+                }
+                #member-info-box::-webkit-scrollbar-thumb {
+                    background: #66BB6A;
+                    border-radius: 10px;
+                }
+                #member-info-box::-webkit-scrollbar-thumb:hover {
+                    background: #43A047;
+                }
+                #member-info-box::-webkit-scrollbar-track {
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 10px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
     }
 
     
