@@ -148,12 +148,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             },
             'Bayron': {
-                rol: 'Desarrollador Frontend',
-                descripcion: 'Apasionado por la experiencia de usuario, construye interfaces limpias y modernas.',
+                rol: 'Desarrollador de Software',
+                descripcion: 'Soy un desarrollador de software con formación académica y experiencia práctica en la creación de aplicaciones web y de escritorio, además de la automatización de procesos. Me caracterizo por mi adaptación, aprendizaje continuo y orientación a resultados.',
                 habilidades: {
-                    "React & Angular": "Desarrollo web dinámico.",
-                    "UX/UI": "Enfoque en experiencia de usuario.",
-                    "HTML, CSS & JS": "Fundamentos sólidos."
+                    "Lenguajes de Programación": "Python, Java y C#",
+                    "Backend y APIs": "Django, Flask, FastAPI, integración y consumo de APIs REST",
+                    "Automatización": "Selenium, Web Scraping, Requests, BeautifulSoup",
+                    "Datos": "Procesamiento con Pandas, JSON, CSV, SQL",
+                    "Herramientas": "Git, GitHub, entornos virtuales (venv), interfaces gráficas con Tkinter / CustomTkinter"
                 }
             },
             'Joriel': {
