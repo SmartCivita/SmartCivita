@@ -98,62 +98,167 @@ document.addEventListener('DOMContentLoaded', function() {
             circle.remove();
         }, 600);
     }
+    window.downloadCV = function(name) {
+        const cvFiles = {
+            'Joseph': 'cvs/joseph.pdf',
+            'Yimis': 'cvs/yimis.pdf',
+            'Bayron': 'cvs/bayron.pdf',
+            'Joriel': 'cvs/joriel.pdf'
+        };
+    
+        const fileUrl = cvFiles[name];
+        if (!fileUrl) {
+            alert("CV no disponible para " + name);
+            return;
+        }
+    
+        // 1. Abrir en nueva pestaña
+        window.open(fileUrl, '_blank');
+    
+        // 2. Descargar automáticamente
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.download = `CV_${name}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 
-
-    // MODAL
+        // MODAL
     function showMemberInfo(name) {
         const memberInfo = {
-            'Josep': 'Especialista en en Backend, APIs y Bases de Datos',
-            'Yimis': 'Desarrollador en Mobile Android y iOS',
-            'Bayron': 'Desarrollador Frontend y Experiencia de Usuario',
-            'Joriel': 'Desarrolador de Inteligencia artifical'
+            'Joseph': {
+                rol: 'Líder de Desarrollo Backend',
+                descripcion: 'Josep es la fuerza detrás de nuestra infraestructura de datos y lógica de negocio. Con más de 10 años de experiencia, asegura sistemas robustos y escalables.',
+                habilidades: {
+                    "Python & Django": "Experto en APIs y servicios RESTful.",
+                    "Bases de Datos": "SQL (PostgreSQL) y NoSQL (MongoDB), diseño y optimización.",
+                    "Cloud Computing": "Experiencia con AWS para despliegue y gestión de servicios."
+                }
+            },
+            'Yimis': {
+                rol: 'Desarrollador Mobile',
+                descripcion: 'Especialista en desarrollo de aplicaciones móviles Android y iOS con experiencia en interfaces intuitivas.',
+                habilidades: {
+                    "Kotlin & Java": "Desarrollo Android nativo.",
+                    "Swift & Objective-C": "Desarrollo iOS.",
+                    "Flutter & React Native": "Multiplataforma."
+                }
+            },
+            'Bayron': {
+                rol: 'Desarrollador Frontend',
+                descripcion: 'Apasionado por la experiencia de usuario, construye interfaces limpias y modernas.',
+                habilidades: {
+                    "React & Angular": "Desarrollo web dinámico.",
+                    "UX/UI": "Enfoque en experiencia de usuario.",
+                    "HTML, CSS & JS": "Fundamentos sólidos."
+                }
+            },
+            'Joriel': {
+                rol: 'Desarrollador de Inteligencia Artificial',
+                descripcion: 'Investigador y creador de soluciones inteligentes para problemas complejos.',
+                habilidades: {
+                    "Machine Learning": "Modelos predictivos y clasificación.",
+                    "Deep Learning": "Redes neuronales avanzadas.",
+                    "Procesamiento de Datos": "Optimización y análisis de grandes volúmenes."
+                }
+            }
         };
-    const prevModal = document.getElementById('member-info-box');
-    if (prevModal) prevModal.remove();
-    const modal = document.createElement('div');
+
+        const member = memberInfo[name];
+
+        const prevModal = document.getElementById('member-info-box');
+        if (prevModal) prevModal.remove();
+
+        const modal = document.createElement('div');
         modal.id = "member-info-box";
         modal.style.cssText = `
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            background: linear-gradient(135deg, #4CAF50, #2E7D32);
-            color: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            color: #f5f5f5;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
             z-index: 1000;
-            text-align: center;
-            max-width: 300px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
+            max-width: 800px;
+            width: 90%;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
         `;
+
         modal.innerHTML = `
-            <h3 style="margin-bottom: 15px; font-size: 24px; font-weight: 700;">${name}</h3>
-            <p style="margin-bottom: 20px; opacity: 0.9; line-height: 1.5;">${memberInfo[name] || 'Miembro del equipo SmartCivita'}</p>
-            <button onclick="this.parentElement.remove()" style="
-                background: rgba(255,255,255,0.2);
-                border: 2px solid rgba(255,255,255,0.3);
-                color: white;
-                padding: 10px 20px;
-                border-radius: 10px;
-                cursor: pointer;
-                font-weight: 600;
-                transition: all 0.3s ease;
-            " onmouseover="this.style.background='rgba(255,255,255,0.3)'" 
-               onmouseout="this.style.background='rgba(255,255,255,0.2)'">Cerrar</button>
+            <h1 style="text-align:center; font-size: 38px; margin-bottom: 10px; color:#FFFFFF;">${name}</h1>
+            <h3 style="text-align:center; font-size: 22px; color:#7fd650;; margin-bottom: 30px;">${member.rol}</h3>
+            
+            <div style="display:flex; flex-wrap:wrap; gap:40px; margin-bottom:30px;">
+                <div style="flex:1; min-width:280px;">
+                    <h2 style="font-size:20px; margin-bottom:15px; color:#66BB6A;">Descripción</h2>
+                    <p style="line-height:1.8; color:#e0e0e0;">${member.descripcion}</p>
+                </div>
+                <div style="flex:1; min-width:280px;">
+                    <h2 style="font-size:20px; margin-bottom:15px; color:#66BB6A;">Habilidades Técnicas</h2>
+                    ${Object.entries(member.habilidades).map(([titulo, detalle]) => `
+                        <div style="
+                            background: #388E3C;
+                            padding:20px;
+                            border-radius:18px;
+                            margin-bottom:15px;
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                        ">
+                            <strong style="color:#7fd650;">${titulo}</strong>
+                            <p style="font-size:14px; margin-top:8px; color:#f0f0f0;">${detalle}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:30px;">
+                <button onclick="downloadCV('${name}')" style="
+                    background: linear-gradient(135deg, #4CAF50, #43A047);
+                    border: none;
+                    color: white;
+                    padding: 14px 28px;
+                    border-radius: 12px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    font-size: 16px;
+                    transition: background 0.3s;
+                    margin-right: 15px;
+                " onmouseover="this.style.background='linear-gradient(135deg, #66BB6A, #3f9a43)'" 
+                onmouseout="this.style.background='linear-gradient(135deg, #4CAF50, #43A047)'">
+                    Descargar CV de ${name}
+                </button>
+
+                <button onclick="document.getElementById('member-info-box').remove()" style="
+                    background: #2E7D32;
+                    border: 2px solid #66BB6A;
+                    color: #fff;
+                    padding: 12px 25px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    font-size: 15px;
+                    transition: all 0.3s;
+                " onmouseover="this.style.background='#3f9a43'" 
+                onmouseout="this.style.background='#2E7D32'">
+                    Cerrar
+                </button>
+            </div>
         `;
+
         document.body.appendChild(modal);
+
         setTimeout(() => {
             modal.style.transform = 'translate(-50%, -50%) scale(1)';
         }, 10);
-        setTimeout(() => {
-            if (document.body.contains(modal)) {
-                modal.style.transform = 'translate(-50%, -50%) scale(0)';
-                setTimeout(() => modal.remove(), 300);
-            }
-        }, 5000);
     }
+
+    
+
+
 
 
     // EFECTO MQUINA DE ESCRIBIR
