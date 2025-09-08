@@ -671,5 +671,5 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     z-index: 2;
     overflow-y: visible !important;
     /* background-color: #2E7D32; */
-    background: linear-gradient(180deg, transparent 0%, #3f9a43 90%);
+    background: linear-gradient(180deg, transparent 0%, #3f9a43 40%);
 }
