@@ -168,9 +168,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 rol: 'Desarrollador de Software',
                 descripcion: 'Soy un desarrollador con sólidos conocimientos en programación, desarrollo web y gestión de bases de datos. Manejo Python, C++ y tecnologías web como HTML5, CSS3 y JavaScript. Tengo experiencia con MySQL y PostgreSQL, y me interesa especialmente el backend, la inteligencia artificial y la automatización. Me destaco por mi mentalidad de mejora continua y la búsqueda de soluciones eficientes y seguras.',
                 habilidades: {
-                    "Lenguajes de Programación": "Python (desde 2022), C++ (desde 2024)",
+                    "Lenguajes de Programación": "Python, C++",
+                    "Computer Vision": "Procesamiento de imágenes, detección y reconocimiento facial.",
                     "Tecnologías Web": "HTML5, CSS3, JavaScript, Flask",
                     "Bases de Datos": "SQL, MySQL, PostgreSQL",
+                    "Procesamiento de datos" : "CSV, Pandas, SQL",
+                    "Herramientas": "Git, GitHub, entornos virtuales (venv)",
                     "Proyectos Personales": "Sistema de autenticación con reconocimiento facial (Flask, JS, HTML5, CSS3, MySQL, ArcFace), Reconocimiento facial en tiempo real con LBPH (Python, OpenCV)",
                 }
             }
