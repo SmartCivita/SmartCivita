@@ -98,6 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
             circle.remove();
         }, 600);
     }
+
+    //Funcion para descargar la CV
     window.downloadCV = function(name) {
         const cvFiles = {
             'Joseph': 'cvs/joseph.pdf',
@@ -112,10 +114,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
     
-        // 1. Abrir en nueva pestaña
+        //Hace que se abra la CV en una nueva pestaña
         window.open(fileUrl, '_blank');
     
-        // 2. Descargar automáticamente
+        //Descarga la CV
         const link = document.createElement('a');
         link.href = fileUrl;
         link.download = `CV_${name}.pdf`;
@@ -188,9 +190,9 @@ document.addEventListener('DOMContentLoaded', function() {
             transition: all 0.3s ease;
             font-family: 'Georgia', serif;
         `;
-
+        //Aca pueden cambiar los colores y el formato de la card que se agrego despues de presionar los nombres
         modal.innerHTML = `
-            <h1 style="text-align:center; font-size: 38px; margin-bottom: 10px; color:#FFFFFF;">${name}</h1>
+            <h1 style="text-align:center; font-size: 38px; margin-bottom: 10px; color:#FFFFFF;">${name}</h1> 
             <h3 style="text-align:center; font-size: 22px; color:#7fd650;; margin-bottom: 30px;">${member.rol}</h3>
             
             <div style="display:flex; flex-wrap:wrap; gap:40px; margin-bottom:30px;">
