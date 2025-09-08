@@ -165,7 +165,7 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 24px;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     margin: 20px;
     padding: 40px;
@@ -670,4 +670,6 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 0;
     z-index: 2;
     overflow-y: visible !important;
+    /* background-color: #2E7D32; */
+    background: linear-gradient(180deg, transparent 0%, #3f9a43 90%);
 }
