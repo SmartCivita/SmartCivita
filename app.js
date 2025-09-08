@@ -83,28 +83,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         `;
-
-    
         if (!document.querySelector('#ripple-styles')) {
             const style = document.createElement('style');
             style.id = 'ripple-styles';
             style.textContent = rippleCSS;
             document.head.appendChild(style);
         }
-
         const existingRipple = element.querySelector('.ripple');
         if (existingRipple) {
             existingRipple.remove();
         }
-
         element.appendChild(circle);
-
         setTimeout(() => {
             circle.remove();
         }, 600);
     }
 
 
+    // MODAL
     function showMemberInfo(name) {
         const memberInfo = {
             'Josep': 'Especialista en en Backend, APIs y Bases de Datos',
@@ -112,14 +108,9 @@ document.addEventListener('DOMContentLoaded', function() {
             'Bayron': 'Desarrollador Frontend y Experiencia de Usuario',
             'Joriel': 'Desarrolador de Inteligencia artifical'
         };
-
-        if (document.getElementById("member-info-box")) {
-        return;
-    }
-        
-
-        
-        const modal = document.createElement('div');
+    const prevModal = document.getElementById('member-info-box');
+    if (prevModal) prevModal.remove();
+    const modal = document.createElement('div');
         modal.id = "member-info-box";
         modal.style.cssText = `
             position: fixed;
@@ -137,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
         `;
-
         modal.innerHTML = `
             <h3 style="margin-bottom: 15px; font-size: 24px; font-weight: 700;">${name}</h3>
             <p style="margin-bottom: 20px; opacity: 0.9; line-height: 1.5;">${memberInfo[name] || 'Miembro del equipo SmartCivita'}</p>
@@ -153,13 +143,10 @@ document.addEventListener('DOMContentLoaded', function() {
             " onmouseover="this.style.background='rgba(255,255,255,0.3)'" 
                onmouseout="this.style.background='rgba(255,255,255,0.2)'">Cerrar</button>
         `;
-
         document.body.appendChild(modal);
-
         setTimeout(() => {
             modal.style.transform = 'translate(-50%, -50%) scale(1)';
         }, 10);
-
         setTimeout(() => {
             if (document.body.contains(modal)) {
                 modal.style.transform = 'translate(-50%, -50%) scale(0)';
@@ -168,10 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
+
+    // EFECTO MQUINA DE ESCRIBIR
     function typeWriter(element, text, speed = 100) {
         let i = 0;
         element.innerHTML = '';
-        
         function type() {
             if (i < text.length) {
                 element.innerHTML += text.charAt(i);
@@ -179,11 +167,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(type, speed);
             }
         }
-        
         type();
     }
 
-    
     const titles = document.querySelectorAll('.content-section h2');
     titles.forEach((title, index) => {
         const originalText = title.textContent;
@@ -194,38 +180,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, index * 500);
     });
-
-    function animateWaves() {
-        const waves = document.querySelectorAll('.wave-svg');
-        waves.forEach((wave, index) => {
-            const paths = wave.querySelectorAll('path');
-            paths.forEach(path => {
-                const length = path.getTotalLength();
-                path.style.strokeDasharray = length;
-                path.style.strokeDashoffset = length;
-                path.style.animation = `drawWave 3s ease-in-out ${index * 0.5}s forwards`;
-            });
-        });
-    }
-
-    const waveAnimationCSS = `
-        @keyframes drawWave {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-    `;
-
     
-    const styleElement = document.createElement('style');
-    styleElement.innerHTML = waveAnimationCSS;
-    document.head.appendChild(styleElement);
-
-    
-    animateWaves();
 });
 
 document.querySelectorAll(".typing").forEach(el => {
+  el.addEventListener("animationend", () => {
+    el.style.borderRight = "none"; 
+  });
+});
+document.querySelectorAll(".typing2").forEach(el => {
+  el.addEventListener("animationend", () => {
+    el.style.borderRight = "none"; 
+  });
+});
+document.querySelectorAll(".typing3").forEach(el => {
   el.addEventListener("animationend", () => {
     el.style.borderRight = "none"; 
   });

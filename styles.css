@@ -116,20 +116,11 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 50vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    background: linear-gradient(180deg, #3f9a43 0%, #7fd650 100%);
     position: relative;
-    z-index: 1;
+    z-index: 4;
 }
 
-.wave-divider {
-    position: relative;
-    width: 100%;
-    height: 180px;
-    fill: url(#waveGradient);
-    overflow: hidden;
-    line-height: 0;
-    z-index: 2;
-}
 
 
 .wave-divider .shape-fill {
@@ -269,12 +260,14 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: transparent;
     color: white;
     position: relative;
+    z-index: 20 !important;
 }
 
 .bottom-right {
     background: transparent;
     color: white;
     position: relative;
+    z-index: 20 !important;
 }
 
 .logo {
@@ -336,6 +329,7 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .typing {
+    width: min-content !important;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -345,6 +339,34 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+.typing2 {
+    width: min-content !important;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #ffffff; /* cursor */
+  animation: typing2 2.5s steps(30, end) forwards,
+             blink 0.75s step-end infinite;
+}
+
+@keyframes typing2 {
+  from { width: 0 }
+  to { width: 100% }
+}
+.typing3 {
+    width: min-content !important;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #ffffff; /* cursor */
+  animation: typing3 2.5s steps(25, end) forwards,
+             blink 0.75s step-end infinite;
+}
+
+@keyframes typing3 {
   from { width: 0 }
   to { width: 100% }
 }
@@ -613,9 +635,10 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         left: 0;
         width: 200vw;
         height: 100vw;
-        z-index: 3;
+        z-index: 999;
         transform: translateY(-75px);
         overflow: hidden;
+        overflow-y: visible;
     }
 
     .wave-svg {
@@ -625,4 +648,22 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         top: 0;
         left: 0;
     }
+}
+
+.wave-container {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  transform: translateY(-100px) !important;
+}
+
+.wave-divider {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    fill: url(#waveGradient);
+    line-height: 0;
+    z-index: 2;
+    overflow-y: visible !important;
 }
